@@ -4,19 +4,27 @@ import './App.css';
 import routes from './routes';
 import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 
+import {createStore} from 'redux';
+import appReducer from './reducers/index';
+import {Provider } from 'react-redux';
+
+const store = createStore(appReducer);
+
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Menu/>
-          <div className="container">
-              <div className="row ">
-                {this.showContentMenus(routes)}
-              </div>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Menu/>
+            <div className="container">
+                <div className="row ">
+                  {this.showContentMenus(routes)}
+                </div>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </Provider>
     )
   }
   showContentMenus(routes) {

@@ -48,6 +48,7 @@ class Menu extends Component {
       return (
         menus.map((item, index)=>(
           <MenuLink
+            key={index}
             label={item.name}
             to={item.to}
             activeOnlyWhenExact={item.exact}
